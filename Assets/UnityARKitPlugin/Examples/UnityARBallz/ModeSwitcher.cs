@@ -22,7 +22,6 @@ public class ModeSwitcher : MonoBehaviour {
 	{
 		ballMake.SetActive (enable);
 		ballMove.SetActive (!enable);
-
 		
 	}
 

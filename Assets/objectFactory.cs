@@ -24,10 +24,11 @@ public class objectFactory : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
 //		var point = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 100, 100f, transform.position.z));
 //		transform.position = point;
-		Debug.Log ("!!!!");
+
+		UnityARSessionNativeInterface.ARFrameUpdatedEvent += ARFrameUpdate;
+
 	}
 
-//	const prevPosi
 	public void OnPointerDown(PointerEventData ped) 
 	{
 		Debug.Log (Input.mousePosition);
@@ -50,7 +51,6 @@ public class objectFactory : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 	}
 
 	void Update() {
-		
 		if (isDragging) {
 			draggingObj.transform.position = new Vector3(
 				Input.mousePosition.x,
@@ -58,8 +58,11 @@ public class objectFactory : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 				transform.position.z
 			);
 		}
-//		Debug.Log ("!!!!");
 //		var point = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 200, 200f, transform.position.z));
 //		transform.position = point;
+	}
+
+	private void ARFrameUpdate(UnityARCamera arCamera) {
+		Debug.Log (arCamera);
 	}
 }
