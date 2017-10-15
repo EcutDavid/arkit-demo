@@ -17,9 +17,14 @@ public class BallMover : MonoBehaviour {
 	{
 		collBallGO = Instantiate (collBallPrefab, explodePosition, Quaternion.identity);
 	}
+
+	void onMouseDown() {
+		Debug.Log (Input.mousePosition);
+	}
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (Input.mousePosition);
 		if (Input.touchCount > 0 )
 		{
 			var touch = Input.GetTouch(0);

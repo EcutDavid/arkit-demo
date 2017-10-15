@@ -6,19 +6,29 @@ using UnityEngine.XR.iOS;
 public class BallMaker : MonoBehaviour {
 
 	public GameObject ballPrefab;
+	public GameObject ballPrefab2;
+	public GameObject ballPrefab3;
+	public GameObject ballPrefab4;
 	public float createHeight;
+	private int counter = 0;
 	private MaterialPropertyBlock props;
+	private List<GameObject> prefabList = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
+		prefabList.Add (ballPrefab);
+		prefabList.Add (ballPrefab2);
+		prefabList.Add (ballPrefab3);
+		prefabList.Add (ballPrefab4);
 		props = new MaterialPropertyBlock ();
-
 	}
 
 	void CreateBall(Vector3 atPosition)
 	{
-		GameObject ballGO = Instantiate (ballPrefab, atPosition, Quaternion.identity);
-			
+		GameObject ballGO = Instantiate (prefabList[counter++], atPosition, Quaternion.identity);
+		if(counter == prefabList.Count) {
+			counter = 0;
+		}
 		
 		float r = Random.Range(0.0f, 1.0f);
 		float g = Random.Range(0.0f, 1.0f);
